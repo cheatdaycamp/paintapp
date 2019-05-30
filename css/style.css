@@ -39,83 +39,83 @@ html {
     max-width: 600px;
 }
 
-.color1 {
-    background-color: #e5e5e5
+#color1 {
+    background-color: purple
 }
 
-.color2 {
+#color2 {
     background-color: #cccccc
 }
 
-.color3 {
+#color3 {
     background-color: #b3b3b3
 }
 
-.color4 {
+#color4 {
     background-color: #999999
 }
 
-.color5 {
+#color5 {
     background-color: #808080
 }
 
-.color6 {
+#color6 {
     background-color: #666666
 }
 
-.color7 {
+#color7 {
     background-color: #4d4d4d
 }
 
-.color8 {
+#color8 {
     background-color: #333333
 }
 
-.color9 {
+#color9 {
     background-color: #1a1a1a
 }
 
-.color10 {
+#color10 {
     background-color: #000000
 }
 
-.color11 {
+#color11 {
     background-color: #d8334a
 }
 
-.color12 {
+#color12 {
     background-color: #ed5565
 }
 
-.color13 {
+#color13 {
     background-color: #fc6e51
 }
 
-.color14 {
+#color14 {
     background-color: #ffce54
 }
 
-.color15 {
+#color15 {
     background-color: #e8ce4d
 }
 
-.color16 {
+#color16 {
     background-color: #a0d468
 }
 
-.color17 {
+#color17 {
     background-color: #2ecc71
 }
 
-.color18 {
+#color18 {
     background-color: #48cfad
 }
 
-.color19 {
+#color19 {
     background-color: #a0cecb
 }
 
-.color20 {
+#color20 {
     background-color: #4fc1e9
 }
 
@@ -135,7 +135,7 @@ i:hover {
     cursor: pointer;
 }
 
-circle a:hover {
+.circle:hover {
     -webkit-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
     -moz-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
     box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
@@ -166,7 +166,7 @@ a .fas:hover {
     font-size: 16pt;
 }
 
-.canvas {
+#canvas {
     width: 500px;
     height: 500px;
     background-color: white;

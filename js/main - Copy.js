@@ -8,6 +8,7 @@ var brushType = "Squared";
 var mybrush = [brushSize, selectedColor, brushType];
 
 
+
 paintapp.start = function() {
     paintapp.bindMenuActions();
 };
@@ -43,43 +44,9 @@ paintapp.bindMenuActions = function() {
     eraserMedium.addEventListener("click", paintapp.eraserMedium);
     var eraserLarge = document.getElementById("eraserLarge");
     eraserLarge.addEventListener("click", paintapp.eraserLarge);
-
-    // ---------------------------------
-    canvas.addEventListener("click", paintapp.draw);
-
-    // ---------------------------------
-    var color1 = document.getElementById("color1");
-    color1.addEventListener("click", paintapp.color(this.id))
-
+    var brush
 };
-paintapp.draw = function() {
-    var newDiv = document.createElement("div");
-    newDiv.style.backgroundColor = selectedColor;
-    newDiv.style.width = "10px";
-    newDiv.style.height = "10px";
-    canvas.appendChild(newDiv);
-}
 
-paintapp.color = function(someID) {
-    var thisButton = document.getElementById(someID);
-    console.log(thisButton);
-    console.log("hola");
-    var target = document.getElementsByClassName("circle");
-    for (var i = 0; i < target.length; i++) {
-        if (target[i].id !== someID)
-            target[i].style.opacity = .7;
-    }
-
-    // $(".circle").css("opacity", 1);
-    // thisButton.style.opacity = 1;
-    // selectedColor = thisButton.style.backgroundColor;
-    // console.log(selectedColor)
-}
-
-paintapp.brushsize = function() {
-
-
-}
 paintapp.undo = function() {
     alert("undo");
 };
@@ -101,6 +68,7 @@ paintapp.load = function() {
         load();
     }
 };
+
 paintapp.clear = function() {
     canvas.innerHTML = "";
 };

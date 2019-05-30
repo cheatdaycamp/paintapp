@@ -6,7 +6,7 @@ var brushSize = "10";
 var selectedColor = "#4fc1e9";
 var brushType = "Squared";
 var mybrush = [brushSize, selectedColor, brushType];
-
+var counter = 0;
 
 paintapp.start = function() {
     paintapp.bindMenuActions();
@@ -123,8 +123,7 @@ paintapp.draw = function() {
     var newDiv = document.createElement("div");
     newDiv.style.backgroundColor = selectedColor;
     newDiv.style.width = brushSize + "px";
-    console.log(brushSize);
-    console.log(brushType);
+
     newDiv.style.height = brushSize + "px";
     if (brushType == "Squared") {
         newDiv.style.borderRadius = "0px";
@@ -132,6 +131,10 @@ paintapp.draw = function() {
         newDiv.style.borderRadius = "50%";
     }
     canvas.appendChild(newDiv);
+    counter++;
+    var step = counter;
+    var file = canvas.innerHTML;
+    localStorage.setItem(step, file);
 }
 
 paintapp.color = function(event) {
@@ -155,7 +158,6 @@ paintapp.getbrush = function(event) {
         if (loopForOpacity[i].id !== event.target.id)
             loopForOpacity[i].style.opacity = .7;
     }
-    console.log(event.target.id)
     switch (event.target.id) {
         case "brushSquaredSmall":
             brushSize = 10;
@@ -185,10 +187,25 @@ paintapp.getbrush = function(event) {
 };
 
 paintapp.undo = function() {
-    alert("undo");
+    var deviation = counter - 1;
+    var undo = localStorage.getItem(deviation);
+    if (undo != null) {
+        canvas.innerHTML = undo;
+        counter--;
+    } else {
+        canvas.innerHTML = "";
+        counter = 0;
+    };
+    console.log(counter);
+
 };
 paintapp.redo = function() {
-    alert("redo");
+    var deviation = counter + 1;
+    var redo = localStorage.getItem(deviation);
+    if (redo != null) {
+        canvas.innerHTML = redo;
+        counter++;
+    }
 };
 paintapp.save = function() {
     var file = prompt("Save as: ");
@@ -206,7 +223,6 @@ paintapp.load = function() {
     }
 };
 paintapp.clear = function() {
-    console.log(canvas.get('angle'));
     canvas.innerHTML = "";
 };
 paintapp.rotateright = function() {

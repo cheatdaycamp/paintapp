@@ -1,12 +1,10 @@
-var paintapp = {}
+var paintapp = {};
 
 paintapp.start = function() {
     paintapp.bindMenuActions();
-
 };
 
 paintapp.bindMenuActions = function() {
-
     var undo = document.getElementById("undo");
     undo.addEventListener("click", paintapp.undo);
     var redo = document.getElementById("redo");
@@ -37,20 +35,52 @@ paintapp.bindMenuActions = function() {
     eraserMedium.addEventListener("click", paintapp.eraserMedium);
     var eraserLarge = document.getElementById("eraserLarge");
     eraserLarge.addEventListener("click", paintapp.eraserLarge);
-
 };
-paintapp.undo
-paintapp.redo
-paintapp.save
-paintapp.load
-paintapp.clear
-paintapp.rotateright
-paintapp.brushSquaredSmall,
-    paintapp.brushSquaredMedium
-paintapp.brushSquaredLarge
-paintapp.brushRoundedSmall
-paintapp.brushRoundedMedium
-paintapp.brushRoundedLarge
-paintapp.eraserSmall
-paintapp.eraserMedium
-paintapp.eraserLarge
+
+paintapp.undo = function() {
+    alert("undo");
+};
+paintapp.redo = function() {
+    alert("redo");
+};
+paintapp.save = function() {
+    alert("save");
+};
+paintapp.load = function() {
+    alert("load");
+};
+paintapp.clear = function() {
+    alert("clear");
+};
+paintapp.rotateright = function() {
+    alert("rotateright");
+};
+paintapp.brushSquaredSmall = function() {
+    alert("brushSquaredSmall");
+};
+paintapp.brushSquaredMedium = function() {
+    alert("brushSquaredMedium");
+};
+paintapp.brushSquaredLarge = function() {
+    alert("brushSquaredLarge");
+};
+paintapp.brushRoundedSmall = function() {
+    alert("brushRoundedSmall");
+};
+paintapp.brushRoundedMedium = function() {
+    alert("brushRoundedMedium");
+};
+paintapp.brushRoundedLarge = function() {
+    alert("brushRoundedLarge");
+};
+paintapp.eraserSmall = function() {
+    alert("eraserSmall");
+};
+paintapp.eraserMedium = function() {
+    alert("eraserMedium");
+};
+paintapp.eraserLarge = function() {
+    alert("eraserLarge");
+};
+
+paintapp.start();

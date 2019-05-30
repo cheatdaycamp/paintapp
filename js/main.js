@@ -3,10 +3,9 @@ var paintapp = {};
 var canvas = document.getElementById("canvas");
 
 var brushSize = "10";
-var selectedColor = "black";
+var selectedColor = "#4fc1e9";
 var brushType = "Squared";
 var mybrush = [brushSize, selectedColor, brushType];
-var blockingDiv = document.getElementById("blockingDiv");
 
 
 paintapp.start = function() {
@@ -29,17 +28,17 @@ paintapp.bindMenuActions = function() {
     var rotateright = document.getElementById("rotateright");
     rotateright.addEventListener("click", paintapp.rotateright);
     var brushSquaredSmall = document.getElementById("brushSquaredSmall");
-    brushSquaredSmall.addEventListener("click", paintapp.brushSquaredSmall);
+    brushSquaredSmall.addEventListener("click", paintapp.getbrush);
     var brushSquaredMedium = document.getElementById("brushSquaredMedium");
-    brushSquaredMedium.addEventListener("click", paintapp.brushSquaredMedium);
+    brushSquaredMedium.addEventListener("click", paintapp.getbrush);
     var brushSquaredLarge = document.getElementById("brushSquaredLarge");
-    brushSquaredLarge.addEventListener("click", paintapp.brushSquaredLarge);
+    brushSquaredLarge.addEventListener("click", paintapp.getbrush);
     var brushRoundedSmall = document.getElementById("brushRoundedSmall");
-    brushRoundedSmall.addEventListener("click", paintapp.brushRoundedSmall);
+    brushRoundedSmall.addEventListener("click", paintapp.getbrush);
     var brushRoundedMedium = document.getElementById("brushRoundedMedium");
-    brushRoundedMedium.addEventListener("click", paintapp.brushRoundedMedium);
+    brushRoundedMedium.addEventListener("click", paintapp.getbrush);
     var brushRoundedLarge = document.getElementById("brushRoundedLarge");
-    brushRoundedLarge.addEventListener("click", paintapp.brushRoundedLarge);
+    brushRoundedLarge.addEventListener("click", paintapp.getbrush);
     var eraserSmall = document.getElementById("eraserSmall");
     eraserSmall.addEventListener("click", paintapp.eraserSmall);
     var eraserMedium = document.getElementById("eraserMedium");
@@ -114,6 +113,8 @@ paintapp.bindMenuActions = function() {
 };
 
 paintapp.paintButton = function() {
+    var blockingDiv = document.getElementById("blockingDiv");
+
     blockingDiv.style.display = "none";
     // delay it 3 seconds?
 }
@@ -121,9 +122,15 @@ paintapp.paintButton = function() {
 paintapp.draw = function() {
     var newDiv = document.createElement("div");
     newDiv.style.backgroundColor = selectedColor;
-    newDiv.style.width = "10px";
-    newDiv.style.height = "10px";
-    newDiv.style.opacity = 1;
+    newDiv.style.width = brushSize + "px";
+    console.log(brushSize);
+    console.log(brushType);
+    newDiv.style.height = brushSize + "px";
+    if (brushType == "Squared") {
+        newDiv.style.borderRadius = "0px";
+    } else {
+        newDiv.style.borderRadius = "50%";
+    }
     canvas.appendChild(newDiv);
 }
 
@@ -140,10 +147,43 @@ paintapp.color = function(event) {
     }
 }
 
-paintapp.brushsize = function() {
+paintapp.getbrush = function(event) {
+    var thisButton = document.getElementById(event.target.id);
+    thisButton.style.opacity = 1;
+    var loopForOpacity = document.getElementsByClassName("fas");
+    for (var i = 0; i < loopForOpacity.length; i++) {
+        if (loopForOpacity[i].id !== event.target.id)
+            loopForOpacity[i].style.opacity = .7;
+    }
+    console.log(event.target.id)
+    switch (event.target.id) {
+        case "brushSquaredSmall":
+            brushSize = 10;
+            brushType = "Squared";
+            break;
+        case "brushSquaredMedium":
+            brushSize = 15;
+            brushType = "Squared";
+            break;
+        case "brushSquaredLarge":
+            brushSize = 20;
+            brushType = "Squared";
+            break;
+        case "brushRoundedSmall":
+            brushSize = 10;
+            brushType = "Rounded";
+            break;
+        case "brushRoundedMedium":
+            brushSize = 15;
+            brushType = "Rounded";
+            break;
+        case "brushRoundedLarge":
+            brushSize = 20;
+            brushType = "Rounded";
+            break;
+    }
+};
 
-
-}
 paintapp.undo = function() {
     alert("undo");
 };
@@ -166,29 +206,13 @@ paintapp.load = function() {
     }
 };
 paintapp.clear = function() {
+    console.log(canvas.get('angle'));
     canvas.innerHTML = "";
 };
 paintapp.rotateright = function() {
-    alert("rotateright");
+    canvas.style = 'transform: rotate(' + 90 + 'deg)';
 };
-paintapp.brushSquaredSmall = function() {
-    alert("brushSquaredSmall");
-};
-paintapp.brushSquaredMedium = function() {
-    alert("brushSquaredMedium");
-};
-paintapp.brushSquaredLarge = function() {
-    alert("brushSquaredLarge");
-};
-paintapp.brushRoundedSmall = function() {
-    alert("brushRoundedSmall");
-};
-paintapp.brushRoundedMedium = function() {
-    alert("brushRoundedMedium");
-};
-paintapp.brushRoundedLarge = function() {
-    alert("brushRoundedLarge");
-};
+
 paintapp.eraserSmall = function() {
     alert("eraserSmall");
 };

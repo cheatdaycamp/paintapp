@@ -26,6 +26,20 @@ html {
     background-color: black
 }
 
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus,
+button,
+button:hover,
+button:active,
+button:visited,
+button:focus {
+    text-decoration: none;
+    outline: none
+}
+
 .bkg-primary {
     width: 100vw;
     height: 100vh;

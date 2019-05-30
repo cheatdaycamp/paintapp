@@ -1,0 +1,177 @@
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container-flex {
+    margin: 0px;
+    padding: 0px;
+}
+
+.mainbar {
+    z-index: 999;
+}
+
+.padding5px {
+    padding: 5px;
+}
+
+.bkg-secondary {
+    background-color: black
+}
+
+.bkg-primary {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/paperplane.jpg");
+    background-repeat: repeat;
+    overflow: auto;
+    opacity: .3
+}
+
+.wrapper {
+    max-width: 600px;
+}
+
+.color1 {
+    background-color: #e5e5e5
+}
+
+.color2 {
+    background-color: #cccccc
+}
+
+.color3 {
+    background-color: #b3b3b3
+}
+
+.color4 {
+    background-color: #999999
+}
+
+.color5 {
+    background-color: #808080
+}
+
+.color6 {
+    background-color: #666666
+}
+
+.color7 {
+    background-color: #4d4d4d
+}
+
+.color8 {
+    background-color: #333333
+}
+
+.color9 {
+    background-color: #1a1a1a
+}
+
+.color10 {
+    background-color: #000000
+}
+
+.color11 {
+    background-color: #d8334a
+}
+
+.color12 {
+    background-color: #ed5565
+}
+
+.color13 {
+    background-color: #fc6e51
+}
+
+.color14 {
+    background-color: #ffce54
+}
+
+.color15 {
+    background-color: #e8ce4d
+}
+
+.color16 {
+    background-color: #a0d468
+}
+
+.color17 {
+    background-color: #2ecc71
+}
+
+.color18 {
+    background-color: #48cfad
+}
+
+.color19 {
+    background-color: #a0cecb
+}
+
+.color20 {
+    background-color: #4fc1e9
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: block;
+    margin: 0px 5px;
+    opacity: .7;
+    border: 2px solid white;
+}
+
+a:hover,
+i:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+circle a:hover {
+    -webkit-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+}
+
+a .fas:hover {
+    text-shadow: 0px 0px 8px #FFFFFF;
+}
+
+.minwidthmincontent {
+    width: min-content;
+}
+
+.fas {
+    color: white;
+    opacity: .7
+}
+
+.sizesmall {
+    font-size: 8pt;
+}
+
+.sizemedium {
+    font-size: 12pt;
+}
+
+.sizelarge {
+    font-size: 16pt;
+}
+
+.canvas {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
+    -moz-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
+    box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
+    border: 1px solid black;
+}

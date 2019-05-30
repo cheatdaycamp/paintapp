@@ -1,0 +1,13 @@
+eraser
+save
+load
+
+back
+forward
+clearbutton
+brush-size
+brush type
+
+
+rotate left
+rotate right

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang=en xml:lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Advanced Javascript">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Jonatan Kruszewski">
+
+    <title>Paint
+    </title>
+
+    <link rel="Icon" href="https://img.icons8.com/office/40/000000/paint.png">
+
+
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!--font awesome-->
+
+    <!--BOOTSTRAP 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--BOOTSTRAP 4-->
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,800&display=swap" rel="stylesheet">
+    <!--FONTS-->
+
+    <!--CSS-->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--CSS-->
+
+    <!--JS-->
+    <script src="./js/main.js"></script>
+    <!--JS-->
+
+</head>
+
+
+<body>
+    <div class="container-flex">
+        <!-------------------------TOOL PALLETTE ------------------------->
+
+        <div class="row mainbar padding5px bkg-secondary text-center justify-content-center">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
+                <a class="color1 circle"></a>
+                <a class="color2 circle"></a>
+                <a class="color3 circle"></a>
+                <a class="color4 circle"></a>
+                <a class="color5 circle"></a>
+                <a class="color6 circle"></a>
+                <a class="color7 circle"></a>
+                <a class="color8 circle"></a>
+                <a class="color9 circle"></a>
+                <a class="color10 circle"></a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
+                <a class="color11 circle"></a>
+                <a class="color12 circle"></a>
+                <a class="color13 circle"></a>
+                <a class="color14 circle"></a>
+                <a class="color15 circle"></a>
+                <a class="color16 circle"></a>
+                <a class="color17 circle"></a>
+                <a class="color18 circle"></a>
+                <a class="color19 circle"></a>
+                <a class="color20 circle"></a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
+                <a class="padding5px" id="brushSquaredSmall"><i class="fas fa-square-full sizesmall"></i></a>
+                <a class="padding5px" id="brushSquaredMedium"><i class="fas fa-square-full sizemedium"></i></a>
+                <a class="padding5px" id="brushSquaredLarge"><i class="fas fa-square-full sizelarge"></i></a>
+                <a class="padding5px" id="brushSquaredSmall"><i class="fas fa-circle sizesmall"></i></a>
+                <a class="padding5px" id="brushSquaredMedium"><i class="fas fa-circle sizemedium"></i></a>
+                <a class="padding5px" id="brushSquaredLarge"><i class="fas fa-circle sizelarge"></i></a>
+                <a class="padding5px" id="eraserSmall"><i class="fas fa-eraser sizesmall"></i></a>
+                <a class="padding5px" id="eraserMedium"><i class="fas fa-eraser sizemedium"></i></a>
+                <a class="padding5px" id="eraserLarge"><i class="fas fa-eraser sizelarge"></i></a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
+                <a class="padding5px" id="undo"><i class="fas fa-undo"></i></a>
+                <a class="padding5px" id="redo"><i class="fas fa-redo"></i></a>
+                <a class="padding5px" id="save"><i class="fas fa-save"></i></a>
+                <a class="padding5px" id="load"><i class="fas fa-folder-open"></i></a>
+                <a class="padding5px" id="clear"><i class="fas fa-broom"></i></a>
+                <a class="padding5px" id="rotateright"><i class="fas fa-retweet"></i></a>
+            </div>
+        </div>
+        <!------------------------- TOOL PALLETTE ------------------------->
+
+        <!------------------------- CANVAS -------------------------->
+        <!-- gral background -->
+        <div class="padding5px bkg-primary text-center d-flex align-items-center justify-content-center">
+            <div class="canvas">
+
+            </div>
+
+
+        </div>
+        <!--BOOTSTRAP JAVASCRIPT-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!--BOOTSTRAP JAVASCRIPT-->
+</body>

@@ -223,6 +223,29 @@ a .fas:hover {
     border: 1px solid black
 }
 
+#inputRed,
+#inputGreen,
+#inputBlue {
+    width: 50px;
+}
+
+p span {
+    color: white;
+    font-size: 12pt;
+}
+
+.margin0px {
+    margin: 0px
+}
+
+#colorWheel {
+    background-image: url("../img/colorwheel02.png");
+    background-repeat: no-repeat;
+    overflow: auto;
+    background-position: center;
+    background-color: "";
+}
+
 
 /* 
 .functionfadein {

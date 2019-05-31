@@ -41,70 +41,73 @@ paintapp.bindMenuActions = function() {
     brushRoundedLarge.addEventListener("click", paintapp.getbrush);
     var eraserLarge = document.getElementById("eraser");
     eraserLarge.addEventListener("click", paintapp.eraser);
-
     // ---------------------------------
     canvas.addEventListener("click", paintapp.draw);
 
     // ---------------------------------
     var color1 = document.getElementById("color1");
-    color1.addEventListener("click", paintapp.color)
+    color1.addEventListener("click", paintapp.color);
 
     var color2 = document.getElementById("color2");
-    color2.addEventListener("click", paintapp.color)
+    color2.addEventListener("click", paintapp.color);
 
     var color3 = document.getElementById("color3");
-    color3.addEventListener("click", paintapp.color)
+    color3.addEventListener("click", paintapp.color);
 
     var color4 = document.getElementById("color4");
-    color4.addEventListener("click", paintapp.color)
+    color4.addEventListener("click", paintapp.color);
 
     var color5 = document.getElementById("color5");
-    color5.addEventListener("click", paintapp.color)
+    color5.addEventListener("click", paintapp.color);
 
     var color6 = document.getElementById("color6");
-    color6.addEventListener("click", paintapp.color)
+    color6.addEventListener("click", paintapp.color);
 
     var color7 = document.getElementById("color7");
-    color7.addEventListener("click", paintapp.color)
+    color7.addEventListener("click", paintapp.color);
 
     var color8 = document.getElementById("color8");
-    color8.addEventListener("click", paintapp.color)
+    color8.addEventListener("click", paintapp.color);
 
     var color9 = document.getElementById("color9");
-    color9.addEventListener("click", paintapp.color)
+    color9.addEventListener("click", paintapp.color);
 
     var color10 = document.getElementById("color10");
-    color10.addEventListener("click", paintapp.color)
+    color10.addEventListener("click", paintapp.color);
 
     var color11 = document.getElementById("color11");
-    color11.addEventListener("click", paintapp.color)
+    color11.addEventListener("click", paintapp.color);
 
     var color12 = document.getElementById("color12");
-    color12.addEventListener("click", paintapp.color)
+    color12.addEventListener("click", paintapp.color);
 
     var color13 = document.getElementById("color13");
-    color13.addEventListener("click", paintapp.color)
+    color13.addEventListener("click", paintapp.color);
 
     var color14 = document.getElementById("color14");
-    color14.addEventListener("click", paintapp.color)
+    color14.addEventListener("click", paintapp.color);
 
     var color15 = document.getElementById("color15");
-    color15.addEventListener("click", paintapp.color)
+    color15.addEventListener("click", paintapp.color);
 
     var color16 = document.getElementById("color16");
-    color16.addEventListener("click", paintapp.color)
+    color16.addEventListener("click", paintapp.color);
 
     var color17 = document.getElementById("color17");
-    color17.addEventListener("click", paintapp.color)
+    color17.addEventListener("click", paintapp.color);
 
     var color18 = document.getElementById("color18");
-    color18.addEventListener("click", paintapp.color)
+    color18.addEventListener("click", paintapp.color);
 
     var color19 = document.getElementById("color19");
-    color19.addEventListener("click", paintapp.color)
+    color19.addEventListener("click", paintapp.color);
 
     var color20 = document.getElementById("color20");
-    color20.addEventListener("click", paintapp.color)
+    color20.addEventListener("click", paintapp.color);
+
+    var colorWheel = document.getElementById("colorWheel");
+    colorWheel.addEventListener("click", paintapp.colorWheel)
+    colorWheel.addEventListener("click", paintapp.color)
 
 };
 
@@ -118,6 +121,7 @@ paintapp.paintButton = function() {
 paintapp.draw = function() {
     var newDiv = document.createElement("div");
     newDiv.style.backgroundColor = selectedColor;
+    console.log(newDiv.style.backgroundColor);
     newDiv.style.width = brushSize + "px";
 
     newDiv.style.height = brushSize + "px";
@@ -143,6 +147,18 @@ paintapp.color = function(event) {
             loopForOpacity[i].style.opacity = .7;
     }
     eraser.style.opacity = .7;
+}
+
+paintapp.colorWheel = function() {
+    var red = document.getElementById("inputRed");
+    var green = document.getElementById("inputGreen");
+    var blue = document.getElementById("inputBlue");
+    var color = "rgba(" + parseInt(red.value) + ", " + parseInt(green.value) + ", " + parseInt(blue.value) + ", 1)";
+    colorWheel.style.backgroundColor = color;
+    console.log(colorWheel.style.backgroundColor);
+    var style = getComputedStyle(colorWheel);
+    var backgroundColor = style.backgroundColor;
+    selectedColor = backgroundColor;
 }
 
 paintapp.getbrush = function(event) {

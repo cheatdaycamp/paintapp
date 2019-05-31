@@ -39,11 +39,7 @@ paintapp.bindMenuActions = function() {
     brushRoundedMedium.addEventListener("click", paintapp.getbrush);
     var brushRoundedLarge = document.getElementById("brushRoundedLarge");
     brushRoundedLarge.addEventListener("click", paintapp.getbrush);
-    var eraserSmall = document.getElementById("eraserSmall");
-    eraserSmall.addEventListener("click", paintapp.eraser);
-    var eraserMedium = document.getElementById("eraserMedium");
-    eraserMedium.addEventListener("click", paintapp.eraser);
-    var eraserLarge = document.getElementById("eraserLarge");
+    var eraserLarge = document.getElementById("eraser");
     eraserLarge.addEventListener("click", paintapp.eraser);
 
     // ---------------------------------
@@ -146,20 +142,12 @@ paintapp.color = function(event) {
         if (loopForOpacity[i].id !== event.target.id)
             loopForOpacity[i].style.opacity = .7;
     }
-
-    var loopForOpacityOfEraser = document.getElementsByClassName("eraser");
-    for (var i = 0; i < loopForOpacityOfEraser.length; i++) {
-        loopForOpacityOfEraser[i].style.opacity = .7;
-    }
+    eraser.style.opacity = .7;
 }
 
 paintapp.getbrush = function(event) {
     var thisButton = document.getElementById(event.target.id);
     thisButton.style.opacity = 1;
-    var loopForOpacityOfEraser = document.getElementsByClassName("eraser");
-    for (var i = 0; i < loopForOpacityOfEraser.length; i++) {
-        loopForOpacityOfEraser[i].style.opacity = .7;
-    }
     var loopForOpacity = document.getElementsByClassName("fas");
     for (var i = 0; i < loopForOpacity.length; i++) {
         if (loopForOpacity[i].id !== event.target.id)
@@ -195,39 +183,12 @@ paintapp.getbrush = function(event) {
 
 paintapp.eraser = function(event) {
     selectedColor = "white";
-    var brushSquaredSmallButton = document.getElementById("brushSquaredSmall");
-    var brushSquaredMediumButton = document.getElementById("brushSquaredMedium");
-    var brushSquaredLargeButton = document.getElementById("brushSquaredLarge");
-
-    var thisButton = document.getElementById(event.target.id);
-    thisButton.style.opacity = 1;
-    var loopForOpacity = document.getElementsByClassName("eraser");
-    for (var i = 0; i < loopForOpacity.length; i++) {
-        if (loopForOpacity[i].id !== event.target.id)
-            loopForOpacity[i].style.opacity = .7;
-    }
+    eraser.style.opacity = 1;
     var loopForOpacityOfColors = document.getElementsByClassName("circle");
     for (var i = 0; i < loopForOpacityOfColors.length; i++) {
         loopForOpacityOfColors[i].style.opacity = .7;
     }
-    var loopForOpacityOfBrushes = document.getElementsByClassName("brush");
-    for (var i = 0; i < loopForOpacityOfBrushes.length; i++) {
-        loopForOpacityOfBrushes[i].style.opacity = .7;
-    }
-    switch (event.target.id) {
-        case "eraserSmall":
-            brushSize = 10;
-            brushSquaredSmallButton.style.opacity = 1;
-            break;
-        case "eraserdMedium":
-            brushSize = 20;
-            brushSquaredMediumButton.style.opacity = 1;
-            break;
-        case "eraserLarge":
-            brushSize = 40;
-            brushSquaredLargeButton.style.opacity = 1;
-            break;
-    }
+
 };
 
 paintapp.savecurrent = function() {

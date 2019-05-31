@@ -1,17 +1,14 @@
 var paintapp = {};
 
-var canvas = document.getElementById("canvas");
-var brushSize = "10";
-var selectedColor = "#4fc1e9";
-var brushType = "Squared";
-var counter = 0; //for the undo and redo
-var mouseDown = false;
-var mouseUp;
-var mouseMove;
-var flag = 0;
+var canvas = document.getElementById("canvas"),
+    brushSize = "10",
+    selectedColor = "#4fc1e9",
+    brushType = "Squared",
+    counter = 0, //for the undo and redo
+    flag = 0; // for flagging when the app is drawing on the canvas
 
 paintapp.start = function() {
-    paintapp.bindMenuActions();
+    paintapp.bindMenuActions(); //some an ununderstood gilad technic
 };
 
 paintapp.bindMenuActions = function() {
@@ -41,37 +38,18 @@ paintapp.bindMenuActions = function() {
     brushRoundedLarge.addEventListener("click", paintapp.getbrush);
     var eraserLarge = document.getElementById("eraser");
     eraserLarge.addEventListener("click", paintapp.eraser);
-    // ---------------------------------
-    // canvas.addEventListener("click", paintapp.draw);
-    // canvas.addEventListener('click', function(e) {});
-
-    // canvas.addEventListener('click', function() {
-    //     mouseDown !== mouseDown;
-    // });
-    // canvas.addEventListener('mousemove', paintapp.draw);
-    // canvas.addEventListener('mouseup', function() {
-    //     mouseDown = true
-    // });
-
-
 
     canvas.addEventListener("mousedown", function() {
         flag = 1;
     });
     canvas.addEventListener("mousemove", function() {
-        draw(event);
+        draw(event); //couldn't make it work attaching it to the object. So, sorry, global function it is.
     });
     canvas.addEventListener("mouseup", function() {
         flag = 0;
-        paintapp.savecurrent.call();
+        paintapp.savecurrent.call(); //saving the progress for undo/redo
     });
 
-    // let drag = false;
-
-    // canvas.addEventListener('mousedown', () => drag = false);
-    // canvas.addEventListener('mousemove', () => paintapp.draw; drag = true);
-    // canvas.addEventListener('mouseup', () => console.log(drag ? 'drag' : 'click'));
-    // // ---------------------------------
     var colorButtons = document.getElementsByClassName("circle")
     var i = 0,
         l = colorButtons.length;
@@ -128,7 +106,9 @@ paintapp.colorWheel = function() {
 }
 
 function opacityLoop(event, array) {
-    for (var i = 0; i < array.length; i++) {
+    var l = array.length,
+        i = 0;
+    for (i; i < l; i++) {
         if (array[i].id !== event.target.id)
             array[i].style.opacity = .7;
     }

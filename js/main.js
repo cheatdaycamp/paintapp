@@ -1,12 +1,14 @@
 var paintapp = {};
 
 var canvas = document.getElementById("canvas");
-
 var brushSize = "10";
 var selectedColor = "#4fc1e9";
 var brushType = "Squared";
-var mybrush = [brushSize, selectedColor, brushType];
-var counter = 0;
+var counter = 0; //for the undo and redo
+var mouseDown = false;
+var mouseUp;
+var mouseMove;
+var flag = 0;
 
 paintapp.start = function() {
     paintapp.bindMenuActions();
@@ -25,8 +27,6 @@ paintapp.bindMenuActions = function() {
     load.addEventListener("click", paintapp.load);
     var clear = document.getElementById("clear");
     clear.addEventListener("click", paintapp.clear);
-    var rotateright = document.getElementById("rotateright");
-    rotateright.addEventListener("click", paintapp.rotateright);
     var brushSquaredSmall = document.getElementById("brushSquaredSmall");
     brushSquaredSmall.addEventListener("click", paintapp.getbrush);
     var brushSquaredMedium = document.getElementById("brushSquaredMedium");
@@ -42,128 +42,68 @@ paintapp.bindMenuActions = function() {
     var eraserLarge = document.getElementById("eraser");
     eraserLarge.addEventListener("click", paintapp.eraser);
     // ---------------------------------
-    canvas.addEventListener("mousedown", paintapp.draw);
+    // canvas.addEventListener("click", paintapp.draw);
+    // canvas.addEventListener('click', function(e) {});
 
-    // ---------------------------------
-    var color1 = document.getElementById("color1");
-    color1.addEventListener("click", paintapp.color);
+    // canvas.addEventListener('click', function() {
+    //     mouseDown !== mouseDown;
+    // });
+    // canvas.addEventListener('mousemove', paintapp.draw);
+    // canvas.addEventListener('mouseup', function() {
+    //     mouseDown = true
+    // });
 
-    var color2 = document.getElementById("color2");
-    color2.addEventListener("click", paintapp.color);
 
-    var color3 = document.getElementById("color3");
-    color3.addEventListener("click", paintapp.color);
 
-    var color4 = document.getElementById("color4");
-    color4.addEventListener("click", paintapp.color);
+    canvas.addEventListener("mousedown", function() {
+        flag = 1;
+    });
+    canvas.addEventListener("mousemove", function() {
+        draw(event);
+    });
+    canvas.addEventListener("mouseup", function() {
+        flag = 0;
+        paintapp.savecurrent.call();
+    });
 
-    var color5 = document.getElementById("color5");
-    color5.addEventListener("click", paintapp.color);
+    // let drag = false;
 
-    var color6 = document.getElementById("color6");
-    color6.addEventListener("click", paintapp.color);
-
-    var color7 = document.getElementById("color7");
-    color7.addEventListener("click", paintapp.color);
-
-    var color8 = document.getElementById("color8");
-    color8.addEventListener("click", paintapp.color);
-
-    var color9 = document.getElementById("color9");
-    color9.addEventListener("click", paintapp.color);
-
-    var color10 = document.getElementById("color10");
-    color10.addEventListener("click", paintapp.color);
-
-    var color11 = document.getElementById("color11");
-    color11.addEventListener("click", paintapp.color);
-
-    var color12 = document.getElementById("color12");
-    color12.addEventListener("click", paintapp.color);
-
-    var color13 = document.getElementById("color13");
-    color13.addEventListener("click", paintapp.color);
-
-    var color14 = document.getElementById("color14");
-    color14.addEventListener("click", paintapp.color);
-
-    var color15 = document.getElementById("color15");
-    color15.addEventListener("click", paintapp.color);
-
-    var color16 = document.getElementById("color16");
-    color16.addEventListener("click", paintapp.color);
-
-    var color17 = document.getElementById("color17");
-    color17.addEventListener("click", paintapp.color);
-
-    var color18 = document.getElementById("color18");
-    color18.addEventListener("click", paintapp.color);
-
-    var color19 = document.getElementById("color19");
-    color19.addEventListener("click", paintapp.color);
-
-    var color20 = document.getElementById("color20");
-    color20.addEventListener("click", paintapp.color);
-
-    var colorWheel = document.getElementById("colorWheel");
-    colorWheel.addEventListener("click", paintapp.colorWheel)
-    colorWheel.addEventListener("click", paintapp.color)
-
-};
-
+    // canvas.addEventListener('mousedown', () => drag = false);
+    // canvas.addEventListener('mousemove', () => paintapp.draw; drag = true);
+    // canvas.addEventListener('mouseup', () => console.log(drag ? 'drag' : 'click'));
+    // // ---------------------------------
+    var colorButtons = document.getElementsByClassName("circle")
+    var i = 0,
+        l = colorButtons.length;
+    for (i; i < l; i++) {
+        if (colorButtons[i].id == "colorWheel") {
+            colorButtons[i].addEventListener("click", paintapp.colorWheel);
+        }
+        colorButtons[i].addEventListener("click", paintapp.color);
+    }
+}
 paintapp.paintButton = function() {
     var blockingDiv = document.getElementById("blockingDiv");
-
     blockingDiv.style.display = "none";
-    // delay it 3 seconds?
 }
 
-paintapp.draw2 = function() {
-    var mouseDown = canvas.addEventListener('mouseover')
-    if (mouseDown == true) {
-
+function draw(event) {
+    if (flag == 1) {
         var pixel = document.createElement("div");
-        // pixel.style.position = "absolute";
         pixel.style.backgroundColor = selectedColor;
         pixel.style.width = brushSize + "px";
         pixel.style.height = brushSize + "px";
-
         if (brushType == "Squared") {
             pixel.style.borderRadius = "0px";
         } else {
             pixel.style.borderRadius = "50%";
         }
-
-        // div.style.left = ((point.x - brushSize) / 2) + "px"
-        // div.style.top = ((point.y - brushSize) / 2) + "px"
-        // canvas.appendChild(pixel);
-        paintapp.savecurrent.call();
+        pixel.style.position = "absolute";
+        pixel.style.left = event.clientX - event.target.offsetLeft + "px";
+        pixel.style.top = event.clientY - event.target.offsetTop + "px";
+        canvas.appendChild(pixel);
     }
-    // canvas.addEventListener('mousemove', )
-}
-
-paintapp.draw = function(event) {
-
-    var pixel = document.createElement("div");
-    pixel.style.backgroundColor = selectedColor;
-    pixel.style.width = brushSize + "px";
-    pixel.style.height = brushSize + "px";
-    if (brushType == "Squared") {
-        pixel.style.borderRadius = "0px";
-    } else {
-        pixel.style.borderRadius = "50%";
-    }
-    pixel.style.position = "absolute";
-    var canvasStyle = getComputedStyle(canvas);
-    var canvasWidth = canvasStyle.width;
-    // pixel.style.display = "inline-block";
-    pixel.style.left = event.clientX - event.target.offsetLeft + "px";
-    pixel.style.top = event.clientY - event.target.offsetTop + "px";
-    canvas.appendChild(pixel);
-
-    paintapp.savecurrent.call();
-}
-
+};
 
 paintapp.color = function(event) {
     var thisButton = document.getElementById(event.target.id);
@@ -171,12 +111,8 @@ paintapp.color = function(event) {
     var style = getComputedStyle(thisButton);
     var backgroundColor = style.backgroundColor;
     selectedColor = backgroundColor;
-
     var loopForOpacity = document.getElementsByClassName("circle");
-    for (var i = 0; i < loopForOpacity.length; i++) {
-        if (loopForOpacity[i].id !== event.target.id)
-            loopForOpacity[i].style.opacity = .7;
-    }
+    opacityLoop(event, loopForOpacity);
     eraser.style.opacity = .7;
 }
 
@@ -191,14 +127,18 @@ paintapp.colorWheel = function() {
     selectedColor = backgroundColor;
 }
 
+function opacityLoop(event, array) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].id !== event.target.id)
+            array[i].style.opacity = .7;
+    }
+}
+
 paintapp.getbrush = function(event) {
     var thisButton = document.getElementById(event.target.id);
     thisButton.style.opacity = 1;
     var loopForOpacity = document.getElementsByClassName("fas");
-    for (var i = 0; i < loopForOpacity.length; i++) {
-        if (loopForOpacity[i].id !== event.target.id)
-            loopForOpacity[i].style.opacity = .7;
-    }
+    opacityLoop(event, loopForOpacity);
     switch (event.target.id) {
         case "brushSquaredSmall":
             brushSize = 10;
@@ -231,10 +171,7 @@ paintapp.eraser = function(event) {
     selectedColor = "white";
     eraser.style.opacity = 1;
     var loopForOpacityOfColors = document.getElementsByClassName("circle");
-    for (var i = 0; i < loopForOpacityOfColors.length; i++) {
-        loopForOpacityOfColors[i].style.opacity = .7;
-    }
-
+    opacityLoop(event, loopForOpacityOfColors);
 };
 
 paintapp.savecurrent = function() {
@@ -280,9 +217,6 @@ paintapp.load = function() {
 paintapp.clear = function() {
     canvas.innerHTML = "";
     paintapp.savecurrent.call();
-};
-paintapp.rotateright = function() {
-    canvas.style = 'transform: rotate(' + 90 + 'deg)';
 };
 
 paintapp.start();

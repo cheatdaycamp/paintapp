@@ -40,11 +40,11 @@ paintapp.bindMenuActions = function() {
     var brushRoundedLarge = document.getElementById("brushRoundedLarge");
     brushRoundedLarge.addEventListener("click", paintapp.getbrush);
     var eraserSmall = document.getElementById("eraserSmall");
-    eraserSmall.addEventListener("click", paintapp.eraserSmall);
+    eraserSmall.addEventListener("click", paintapp.eraser);
     var eraserMedium = document.getElementById("eraserMedium");
-    eraserMedium.addEventListener("click", paintapp.eraserMedium);
+    eraserMedium.addEventListener("click", paintapp.eraser);
     var eraserLarge = document.getElementById("eraserLarge");
-    eraserLarge.addEventListener("click", paintapp.eraserLarge);
+    eraserLarge.addEventListener("click", paintapp.eraser);
 
     // ---------------------------------
     canvas.addEventListener("click", paintapp.draw);
@@ -131,10 +131,7 @@ paintapp.draw = function() {
         newDiv.style.borderRadius = "50%";
     }
     canvas.appendChild(newDiv);
-    counter++;
-    var step = counter;
-    var file = canvas.innerHTML;
-    localStorage.setItem(step, file);
+    paintapp.savecurrent.call();
 }
 
 paintapp.color = function(event) {
@@ -143,16 +140,26 @@ paintapp.color = function(event) {
     var style = getComputedStyle(thisButton);
     var backgroundColor = style.backgroundColor;
     selectedColor = backgroundColor;
+
     var loopForOpacity = document.getElementsByClassName("circle");
     for (var i = 0; i < loopForOpacity.length; i++) {
         if (loopForOpacity[i].id !== event.target.id)
             loopForOpacity[i].style.opacity = .7;
+    }
+
+    var loopForOpacityOfEraser = document.getElementsByClassName("eraser");
+    for (var i = 0; i < loopForOpacityOfEraser.length; i++) {
+        loopForOpacityOfEraser[i].style.opacity = .7;
     }
 }
 
 paintapp.getbrush = function(event) {
     var thisButton = document.getElementById(event.target.id);
     thisButton.style.opacity = 1;
+    var loopForOpacityOfEraser = document.getElementsByClassName("eraser");
+    for (var i = 0; i < loopForOpacityOfEraser.length; i++) {
+        loopForOpacityOfEraser[i].style.opacity = .7;
+    }
     var loopForOpacity = document.getElementsByClassName("fas");
     for (var i = 0; i < loopForOpacity.length; i++) {
         if (loopForOpacity[i].id !== event.target.id)
@@ -186,6 +193,50 @@ paintapp.getbrush = function(event) {
     }
 };
 
+paintapp.eraser = function(event) {
+    selectedColor = "white";
+    var brushSquaredSmallButton = document.getElementById("brushSquaredSmall");
+    var brushSquaredMediumButton = document.getElementById("brushSquaredMedium");
+    var brushSquaredLargeButton = document.getElementById("brushSquaredLarge");
+
+    var thisButton = document.getElementById(event.target.id);
+    thisButton.style.opacity = 1;
+    var loopForOpacity = document.getElementsByClassName("eraser");
+    for (var i = 0; i < loopForOpacity.length; i++) {
+        if (loopForOpacity[i].id !== event.target.id)
+            loopForOpacity[i].style.opacity = .7;
+    }
+    var loopForOpacityOfColors = document.getElementsByClassName("circle");
+    for (var i = 0; i < loopForOpacityOfColors.length; i++) {
+        loopForOpacityOfColors[i].style.opacity = .7;
+    }
+    var loopForOpacityOfBrushes = document.getElementsByClassName("brush");
+    for (var i = 0; i < loopForOpacityOfBrushes.length; i++) {
+        loopForOpacityOfBrushes[i].style.opacity = .7;
+    }
+    switch (event.target.id) {
+        case "eraserSmall":
+            brushSize = 10;
+            brushSquaredSmallButton.style.opacity = 1;
+            break;
+        case "eraserdMedium":
+            brushSize = 20;
+            brushSquaredMediumButton.style.opacity = 1;
+            break;
+        case "eraserLarge":
+            brushSize = 40;
+            brushSquaredLargeButton.style.opacity = 1;
+            break;
+    }
+};
+
+paintapp.savecurrent = function() {
+    counter++;
+    var step = counter;
+    var file = canvas.innerHTML;
+    localStorage.setItem(step, file);
+    console.log(counter);
+}
 paintapp.undo = function() {
     var deviation = counter - 1;
     var undo = localStorage.getItem(deviation);
@@ -195,9 +246,7 @@ paintapp.undo = function() {
     } else {
         canvas.innerHTML = "";
         counter = 0;
-    };
-    console.log(counter);
-
+    }
 };
 paintapp.redo = function() {
     var deviation = counter + 1;
@@ -224,19 +273,10 @@ paintapp.load = function() {
 };
 paintapp.clear = function() {
     canvas.innerHTML = "";
+    paintapp.savecurrent.call();
 };
 paintapp.rotateright = function() {
     canvas.style = 'transform: rotate(' + 90 + 'deg)';
-};
-
-paintapp.eraserSmall = function() {
-    alert("eraserSmall");
-};
-paintapp.eraserMedium = function() {
-    alert("eraserMedium");
-};
-paintapp.eraserLarge = function() {
-    alert("eraserLarge");
 };
 
 paintapp.start();

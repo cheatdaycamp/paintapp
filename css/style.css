@@ -214,9 +214,12 @@ a .fas:hover {
 
 #canvas {
     width: 500px;
+    top: 50px;
+    position: relative;
     height: 500px;
     background-color: white;
     opacity: 1;
+    overflow: hidden;
     webkit-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
     -moz-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
     box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);

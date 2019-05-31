@@ -33,12 +33,12 @@
 
 
 <body class="bkg-primary">
-    <div style="display:visible" id="blockingDiv">
+    <div style="display:flex" id="blockingDiv">
         <button id="paint">PAINT!</button>
     </div>
 
     <div class="container-flex">
-        <!-------------------------TOOL PALLETTE ------------------------->
+        <!--TOOL PALLETTE -->
 
         <div class="row mainbar padding5px bkg-secondary text-center justify-content-center">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
@@ -74,7 +74,7 @@
                 <a class="circle padding5px" id="colorWheel"></a>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex justify-content-center align-items-center minwidthmincontent padding5px">
-                <a class="padding5px"><i class="fas fa-square-full brush sizesmall" id="brushSquaredSmall" style="opacity:1"></i></i></a>
+                <a class="padding5px"><i class="fas fa-square-full brush sizesmall" id="brushSquaredSmall" style="opacity:1"></i></a>
                 <a class="padding5px"><i class="fas fa-square-full brush sizemedium" id="brushSquaredMedium"></i></a>
                 <a class="padding5px"><i class="fas fa-square-full brush sizelarge" id="brushSquaredLarge"></i></a>
                 <a class="padding5px"><i class="fas fa-circle brush sizesmall" id="brushRoundedSmall"></i></a>
@@ -90,17 +90,16 @@
             </div>
 
         </div>
-        <!------------------------- TOOL PALLETTE ------------------------->
+        <!-- TOOL PALLETTE -->
 
-        <!------------------------- CANVAS -------------------------->
+        <!-- CANVAS -->
         <!-- gral background -->
 
         <div class="row padding5px text-center justify-content-center align-items-center">
-            <div class="col-12 d-flex justify-content-center align-items-center padding5px">
-                <div id="canvas">
-                </div>
+            <div id="canvas">
             </div>
         </div>
+    </div>
 
     </div>
     <!--BOOTSTRAP JAVASCRIPT-->

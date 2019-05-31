@@ -143,9 +143,7 @@ paintapp.draw2 = function() {
 }
 
 paintapp.draw = function(event) {
-    while (canvas.mouseDown == true) {
 
-    }
     var pixel = document.createElement("div");
     pixel.style.backgroundColor = selectedColor;
     pixel.style.width = brushSize + "px";
@@ -159,8 +157,8 @@ paintapp.draw = function(event) {
     var canvasStyle = getComputedStyle(canvas);
     var canvasWidth = canvasStyle.width;
     // pixel.style.display = "inline-block";
-    // pixel.style.left = (event.clientX - canvasWidth) + "px";
-    pixel.style.top = event.clientY + "px";
+    pixel.style.left = event.clientX - event.target.offsetLeft + "px";
+    pixel.style.top = event.clientY - event.target.offsetTop + "px";
     canvas.appendChild(pixel);
 
     paintapp.savecurrent.call();

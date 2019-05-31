@@ -42,7 +42,7 @@ paintapp.bindMenuActions = function() {
     var eraserLarge = document.getElementById("eraser");
     eraserLarge.addEventListener("click", paintapp.eraser);
     // ---------------------------------
-    canvas.addEventListener("click", paintapp.draw);
+    canvas.addEventListener("mousedown", paintapp.draw);
 
     // ---------------------------------
     var color1 = document.getElementById("color1");
@@ -118,21 +118,54 @@ paintapp.paintButton = function() {
     // delay it 3 seconds?
 }
 
-paintapp.draw = function() {
-    var newDiv = document.createElement("div");
-    newDiv.style.backgroundColor = selectedColor;
-    console.log(newDiv.style.backgroundColor);
-    newDiv.style.width = brushSize + "px";
+paintapp.draw2 = function() {
+    var mouseDown = canvas.addEventListener('mouseover')
+    if (mouseDown == true) {
 
-    newDiv.style.height = brushSize + "px";
-    if (brushType == "Squared") {
-        newDiv.style.borderRadius = "0px";
-    } else {
-        newDiv.style.borderRadius = "50%";
+        var pixel = document.createElement("div");
+        // pixel.style.position = "absolute";
+        pixel.style.backgroundColor = selectedColor;
+        pixel.style.width = brushSize + "px";
+        pixel.style.height = brushSize + "px";
+
+        if (brushType == "Squared") {
+            pixel.style.borderRadius = "0px";
+        } else {
+            pixel.style.borderRadius = "50%";
+        }
+
+        // div.style.left = ((point.x - brushSize) / 2) + "px"
+        // div.style.top = ((point.y - brushSize) / 2) + "px"
+        // canvas.appendChild(pixel);
+        paintapp.savecurrent.call();
     }
-    canvas.appendChild(newDiv);
+    // canvas.addEventListener('mousemove', )
+}
+
+paintapp.draw = function(event) {
+    while (canvas.mouseDown == true) {
+
+    }
+    var pixel = document.createElement("div");
+    pixel.style.backgroundColor = selectedColor;
+    pixel.style.width = brushSize + "px";
+    pixel.style.height = brushSize + "px";
+    if (brushType == "Squared") {
+        pixel.style.borderRadius = "0px";
+    } else {
+        pixel.style.borderRadius = "50%";
+    }
+    pixel.style.position = "absolute";
+    var canvasStyle = getComputedStyle(canvas);
+    var canvasWidth = canvasStyle.width;
+    // pixel.style.display = "inline-block";
+    // pixel.style.left = (event.clientX - canvasWidth) + "px";
+    pixel.style.top = event.clientY + "px";
+    canvas.appendChild(pixel);
+
     paintapp.savecurrent.call();
 }
+
 
 paintapp.color = function(event) {
     var thisButton = document.getElementById(event.target.id);
@@ -155,7 +188,6 @@ paintapp.colorWheel = function() {
     var blue = document.getElementById("inputBlue");
     var color = "rgba(" + parseInt(red.value) + ", " + parseInt(green.value) + ", " + parseInt(blue.value) + ", 1)";
     colorWheel.style.backgroundColor = color;
-    console.log(colorWheel.style.backgroundColor);
     var style = getComputedStyle(colorWheel);
     var backgroundColor = style.backgroundColor;
     selectedColor = backgroundColor;
@@ -212,7 +244,6 @@ paintapp.savecurrent = function() {
     var step = counter;
     var file = canvas.innerHTML;
     localStorage.setItem(step, file);
-    console.log(counter);
 }
 paintapp.undo = function() {
     var deviation = counter - 1;

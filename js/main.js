@@ -83,14 +83,24 @@ function draw(event) {
     }
 };
 
+paintApp.eraser = function(event) {
+    selectedColor = "white";
+    eraser.style.opacity = 1;
+    var loopForOpacityOfColors = document.getElementsByClassName("circle");
+    opacityLoop(event, loopForOpacityOfColors);
+};
+
 paintApp.color = function(event) {
     var thisButton = document.getElementById(event.target.id),
         loopForOpacity = document.getElementsByClassName("circle");
-
-    thisButton.style.opacity = 1;
-    selectedColor = getComputedStyle(thisButton).backgroundColor;
-    opacityLoop(event, loopForOpacity);
     eraser.style.opacity = .7;
+    opacityLoop(event, loopForOpacity);
+    thisButton.style.opacity = 1;
+    if (event.id !== "eraser") {
+        selectedColor = getComputedStyle(thisButton).backgroundColor;
+    } else {
+        selectedColor = getComputedStyle(thisButton).color;
+    }
 }
 
 paintApp.colorWheel = function() {
@@ -141,13 +151,6 @@ paintApp.getBrush = function(event) {
             brushType = "Rounded";
             break;
     }
-};
-
-paintApp.eraser = function(event) {
-    selectedColor = "white";
-    eraser.style.opacity = 1;
-    var loopForOpacityOfColors = document.getElementsByClassName("circle");
-    opacityLoop(event, loopForOpacityOfColors);
 };
 
 paintApp.savecurrent = function() {

@@ -161,6 +161,10 @@ button:hover {
     background-color: #4fc1e9
 }
 
+#eraser {
+    color: white;
+}
+
 .circle {
     width: 20px;
     height: 20px;

@@ -53,7 +53,7 @@ paintApp.bindMenuActions = function() {
         flag = 1;
     });
     canvas.addEventListener("mousemove", function() {
-        draw(event);
+        paintApp.draw(event);
     });
     canvas.addEventListener("mouseup", function() {
         flag = 0;
@@ -65,12 +65,13 @@ paintApp.paintButton = function() {
     blockingDiv.style.display = "none";
 }
 
-function draw(event) {
+paintApp.draw = function(event) {
     if (flag == 1) {
         var pixel = document.createElement("div");
         pixel.style.backgroundColor = selectedColor;
         pixel.style.width = brushSize + "px";
         pixel.style.height = brushSize + "px";
+        pixel.style.display = "block";
         if (brushType == "Squared") {
             pixel.style.borderRadius = "0px";
         } else {
@@ -87,20 +88,16 @@ paintApp.eraser = function(event) {
     selectedColor = "white";
     eraser.style.opacity = 1;
     var loopForOpacityOfColors = document.getElementsByClassName("circle");
-    opacityLoop(event, loopForOpacityOfColors);
+    paintApp.opacityLoop(event, loopForOpacityOfColors);
 };
 
 paintApp.color = function(event) {
     var thisButton = document.getElementById(event.target.id),
         loopForOpacity = document.getElementsByClassName("circle");
     eraser.style.opacity = .7;
-    opacityLoop(event, loopForOpacity);
+    paintApp.opacityLoop(event, loopForOpacity);
     thisButton.style.opacity = 1;
-    if (event.id !== "eraser") {
-        selectedColor = getComputedStyle(thisButton).backgroundColor;
-    } else {
-        selectedColor = getComputedStyle(thisButton).color;
-    }
+    selectedColor = getComputedStyle(thisButton).backgroundColor;
 }
 
 paintApp.colorWheel = function() {
@@ -111,7 +108,7 @@ paintApp.colorWheel = function() {
     selectedColor = getComputedStyle(colorWheel).backgroundColor;
 }
 
-function opacityLoop(event, array) {
+paintApp.opacityLoop = function(event, array) {
     var l = array.length,
         i = 0;
     for (i; i < l; i++) {
@@ -122,9 +119,9 @@ function opacityLoop(event, array) {
 
 paintApp.getBrush = function(event) {
     var thisButton = document.getElementById(event.target.id),
-        loopForOpacity = document.getElementsByClassName("fas");
+        loopForOpacity = document.getElementsByClassName("brush");
     thisButton.style.opacity = 1;
-    opacityLoop(event, loopForOpacity);
+    paintApp.opacityLoop(event, loopForOpacity);
     switch (event.target.id) {
         case "brushSquaredSmall":
             brushSize = 10;

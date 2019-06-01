@@ -8,12 +8,12 @@ var canvas = document.getElementById("canvas"),
     flag = 0; // for flagging when the app is drawing on the canvas
 
 paintApp.start = function() {
-    paintApp.bindMenuActions();
+    paintApp.bindMenuActions(); //some an ununderstood gilad technic
 };
 
 paintApp.bindMenuActions = function() {
 
-    // general buttons declarations and their functions
+    // buttons actions
     var paintButton = document.getElementById("paint");
     paintButton.addEventListener("click", paintApp.paintButton)
     var undo = document.getElementById("undo");
@@ -26,8 +26,8 @@ paintApp.bindMenuActions = function() {
     load.addEventListener("click", paintApp.load);
     var clear = document.getElementById("clear");
     clear.addEventListener("click", paintApp.clear);
-    var eraserLarge = document.getElementById("eraser");
-    eraserLarge.addEventListener("click", paintApp.eraser);
+    var eraser = document.getElementById("eraser");
+    eraser.addEventListener("click", paintApp.eraser);
 
     // assigning same function to all brushes buttons trough loop
     var brushButtons = document.getElementsByClassName("brush")
@@ -40,8 +40,8 @@ paintApp.bindMenuActions = function() {
     // assigning same function to all color buttons trough loop
     var colorButtons = document.getElementsByClassName("circle")
     var i = 0,
-        l = colorButtons.length;
-    for (i; i < l; i++) {
+        l2 = colorButtons.length;
+    for (i; i < l2; i++) {
         if (colorButtons[i].id == "colorWheel") {
             colorButtons[i].addEventListener("click", paintApp.colorWheel);
         }
@@ -59,6 +59,7 @@ paintApp.bindMenuActions = function() {
         flag = 0;
         paintApp.savecurrent.call(); //saving the progress for undo/redo
     });
+
 }
 paintApp.paintButton = function() {
     var blockingDiv = document.getElementById("blockingDiv");
@@ -66,14 +67,14 @@ paintApp.paintButton = function() {
 }
 
 function draw(event) {
-    if (flag == 1) {
+    while (flag == 1) {
         var pixel = document.createElement("div");
         pixel.style.backgroundColor = selectedColor;
         pixel.style.width = brushSize + "px";
         pixel.style.height = brushSize + "px";
         if (brushType == "Squared") {
             pixel.style.borderRadius = "0px";
-        } else {
+        } else if (brushType == "Rounded") {
             pixel.style.borderRadius = "50%";
         }
         pixel.style.position = "absolute";
@@ -87,8 +88,8 @@ paintApp.color = function(event) {
     var thisButton = document.getElementById(event.target.id),
         loopForOpacity = document.getElementsByClassName("circle");
 
-    thisButton.style.opacity = 1;
     selectedColor = getComputedStyle(thisButton).backgroundColor;
+    thisButton.style.opacity = 1;
     opacityLoop(event, loopForOpacity);
     eraser.style.opacity = .7;
 }
@@ -96,8 +97,9 @@ paintApp.color = function(event) {
 paintApp.colorWheel = function() {
     var red = document.getElementById("inputRed"),
         green = document.getElementById("inputGreen"),
-        blue = document.getElementById("inputBlue");
-    colorWheel.style.backgroundColor = "rgba(" + parseInt(red.value) + ", " + parseInt(green.value) + ", " + parseInt(blue.value) + ", 1)";
+        blue = document.getElementById("inputBlue"),
+        color = "rgba(" + parseInt(red.value) + ", " + parseInt(green.value) + ", " + parseInt(blue.value) + ", 1)";
+    colorWheel.style.backgroundColor = color;;
     selectedColor = getComputedStyle(colorWheel).backgroundColor;
 }
 
@@ -111,9 +113,9 @@ function opacityLoop(event, array) {
 }
 
 paintApp.getBrush = function(event) {
-    var thisButton = document.getElementById(event.target.id),
-        loopForOpacity = document.getElementsByClassName("fas");
+    var thisButton = document.getElementById(event.target.id);
     thisButton.style.opacity = 1;
+    var loopForOpacity = document.getElementsByClassName("brush");
     opacityLoop(event, loopForOpacity);
     switch (event.target.id) {
         case "brushSquaredSmall":
@@ -141,6 +143,7 @@ paintApp.getBrush = function(event) {
             brushType = "Rounded";
             break;
     }
+
 };
 
 paintApp.eraser = function(event) {

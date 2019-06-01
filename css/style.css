@@ -1,68 +1,64 @@
 body,
 html {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .container-flex {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0
 }
 
 .mainbar {
-    z-index: 999;
+    z-index: 999
 }
 
 .padding5px {
-    padding: 5px;
+    padding: 5px
 }
 
 .bkg-secondary {
-    background-color: black
+    background-color: #000
 }
 
 a,
-a:hover,
 a:active,
-a:visited,
 a:focus,
+a:hover,
+a:visited,
 button,
-button:hover,
 button:active,
-button:visited,
-button:focus {
+button:focus,
+button:hover,
+button:visited {
     text-decoration: none;
-    outline: none
+    outline: 0
 }
 
 .bkg-primary {
     width: 100vw;
     height: 100vh;
-    background-image: url("../img/paperplane.jpg");
+    background-image: url(../img/paperplane.jpg);
     background-repeat: repeat;
     overflow: auto;
     font-family: 'Fredoka One', cursive;
     font-weight: 800;
-    font-size: 16px;
-}
-
-.wrapper {
-    height: 70vh;
+    font-size: 16px
 }
 
 button {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 4px solid black;
+    border: 4px solid #000;
     background-color: transparent;
     font-size: 32px;
-    color: black;
+    color: #000
 }
 
 #blockingDiv {
@@ -76,13 +72,13 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 4s;
+    transition: all 4s
 }
 
 button:hover {
     color: #d8334a;
     border-color: #d8334a;
-    text-shadow: #000000
+    text-shadow: #000
 }
 
 #color1 {
@@ -90,7 +86,7 @@ button:hover {
 }
 
 #color2 {
-    background-color: #cccccc
+    background-color: #ccc
 }
 
 #color3 {
@@ -98,15 +94,15 @@ button:hover {
 }
 
 #color4 {
-    background-color: #999999
+    background-color: #999
 }
 
 #color5 {
-    background-color: #808080
+    background-color: grey
 }
 
 #color6 {
-    background-color: #666666
+    background-color: #666
 }
 
 #color7 {
@@ -114,7 +110,7 @@ button:hover {
 }
 
 #color8 {
-    background-color: #333333
+    background-color: #333
 }
 
 #color9 {
@@ -122,7 +118,7 @@ button:hover {
 }
 
 #color10 {
-    background-color: #000000
+    background-color: #000
 }
 
 #color11 {
@@ -170,46 +166,46 @@ button:hover {
     height: 20px;
     border-radius: 50%;
     display: block;
-    margin: 0px 5px;
+    margin: 0 5px;
     opacity: .7;
-    border: 2px solid white;
+    border: 2px solid #fff
 }
 
 a:hover,
 i:hover {
     opacity: 1;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .circle:hover {
-    -webkit-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
-    -moz-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
-    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 0 8px 1px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0 0 8px 1px rgba(255, 255, 255, 1);
+    box-shadow: 0 0 8px 1px rgba(255, 255, 255, 1)
 }
 
 a .fas:hover {
-    text-shadow: 0px 0px 8px #FFFFFF;
+    text-shadow: 0 0 8px #fff
 }
 
 .minwidthmincontent {
-    width: min-content;
+    width: min-content
 }
 
 .fas {
-    color: white;
+    color: #fff;
     opacity: .7
 }
 
 .sizesmall {
-    font-size: 8pt;
+    font-size: 8pt
 }
 
 .sizemedium {
-    font-size: 12pt;
+    font-size: 12pt
 }
 
 .sizelarge {
-    font-size: 16pt;
+    font-size: 16pt
 }
 
 #canvas {
@@ -217,49 +213,34 @@ a .fas:hover {
     top: 50px;
     position: relative;
     height: 500px;
-    background-color: white;
+    background-color: #fff;
     opacity: 1;
     overflow: hidden;
-    webkit-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
-    -moz-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
-    box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, 0.61);
-    border: 1px solid black
+    webkit-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, .61);
+    -moz-box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, .61);
+    box-shadow: 10px 10px 82px -24px rgba(0, 0, 0, .61);
+    border: 1px solid #000
 }
 
-#inputRed,
+#inputBlue,
 #inputGreen,
-#inputBlue {
-    width: 50px;
+#inputRed {
+    width: 50px
 }
 
 p span {
-    color: white;
-    font-size: 12pt;
+    color: #fff;
+    font-size: 12pt
 }
 
 .margin0px {
-    margin: 0px
+    margin: 0
 }
 
 #colorWheel {
-    background-image: url("../img/colorwheel02.png");
+    background-image: url(../img/colorwheel02.png);
     background-repeat: no-repeat;
     overflow: auto;
     background-position: center;
-    background-color: "";
+    background-color: ""
 }
-
-
-/* 
-.functionfadein {
-    animation: fadein 4s cubic-bezier(0.075, 0.82, 0.165, 1) backwards
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-} */
